@@ -14,8 +14,11 @@ public class QbertMoving : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixUpdate()
     {
-        
+        if(Input.GetKey(KeyCode.W))
+        {
+            
+        }
     }
 }
