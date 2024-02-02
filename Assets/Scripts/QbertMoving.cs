@@ -20,5 +20,17 @@ public class QbertMoving : MonoBehaviour
         {
             transform.position += movePointW.position;
         }
+        if(Input.GetKey(KeyCode.S))
+        {
+            transform.position -= movePointS.position;
+        }
+        if(Input.GetKey(KeyCode.D))
+        {
+            transform.position += movePointD.position;
+        }
+        if(Input.GetKey(KeyCode.A))
+        {
+            transform.position -= movePointA.position;
+        }
     }
 }
