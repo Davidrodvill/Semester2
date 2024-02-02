@@ -6,7 +6,7 @@ using System;
 public class QbertMoving : MonoBehaviour
 {
     public float speed = 5;
-    public Transform movePoint;
+    public Transform movePointW, movePointA, movePointS, movePointD;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class QbertMoving : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W))
         {
-            
+            transform.position += movePointW.position;
         }
     }
 }
