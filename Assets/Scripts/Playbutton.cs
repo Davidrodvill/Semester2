@@ -16,7 +16,14 @@ public class Playbutton : MonoBehaviour
     {
         
     }
-
+    public void InfoButtonHit()
+    {
+        SceneManager.LoadScene("InfoScene");
+    }
+    public void MenuButtonHit()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
     public void PlayButtonHit()
     {
         SceneManager.LoadScene("SampleScene");
