@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class BerthrolotltoltLives : MonoBehaviour
 {
     public int BertLives = 3;
+    public GameObject BertRespawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,13 @@ public class BerthrolotltoltLives : MonoBehaviour
         {
             BertLives--;
         }
+    }
+    IEnumerator BertLostlife()
+    {
+        //work on progress
+        BertLives--;
+        transform.position = BertRespawn.transform.position;
+        yield return null;
     }
     IEnumerator Bertdied()
     {
