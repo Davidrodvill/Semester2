@@ -15,17 +15,27 @@ public class BerthrolotltoltLives : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if(BertLives <= 0)
+        {
+            StartCoroutine(Bertdied());
+        }
+    }
+    //if there is nothing in the space he's on, meaning he jumped off X_X
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == null)
+        {
+            BertLives--;
+        }
     }
     IEnumerator Bertdied()
     {
-        if (BertLives <= 0)
-        {
-            //some text saying he died or sum
+        
+        //some text saying he died or sum
 
-            yield return new WaitForSeconds(3);
-            //restart scene
-            SceneManager.LoadScene("SampleScene");
-        }
+        yield return new WaitForSeconds(3);
+        //restart scene
+        SceneManager.LoadScene("SampleScene");
+        
     }
 }
