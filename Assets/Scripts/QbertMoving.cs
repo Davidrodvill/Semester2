@@ -29,6 +29,7 @@ public class QbertMoving : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            //put animation here if any, same for the others
             StartCoroutine(MovePlayer(new Vector2(jumpHeight.x, jumpHeight.y)));
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
