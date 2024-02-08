@@ -26,7 +26,7 @@ public class BerthrolotltoltLives : MonoBehaviour
     {
         if(other.tag == null)
         {
-            BertLives--;
+            StartCoroutine(BertLostlife());
         }
     }
     IEnumerator BertLostlife()
