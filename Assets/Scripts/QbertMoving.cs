@@ -5,6 +5,7 @@ using System;
 
 public class QbertMoving : MonoBehaviour
 {
+    BerthrolotltoltLives bertoltlifescript;
     public float moveSpeed = 5f; // Speed of the jump
     public Vector2 jumpHeight = new Vector2(1, 0.5f); // Height and length of the jump
     public float moveCooldown = 0.5f; // Cooldown in seconds between moves
@@ -14,11 +15,13 @@ public class QbertMoving : MonoBehaviour
 
     void Start()
     {
+        bertoltlifescript = GetComponent<BerthrolotltoltLives>();
         targetPosition = transform.position;
     }
 
     void Update()
     {
+        
         if (canMove)
         {
             CheckInput();
@@ -46,7 +49,7 @@ public class QbertMoving : MonoBehaviour
         }
     }
 
-    IEnumerator MovePlayer(Vector2 direction)
+    public IEnumerator MovePlayer(Vector2 direction)
     {
         canMove = false;
         targetPosition += direction;

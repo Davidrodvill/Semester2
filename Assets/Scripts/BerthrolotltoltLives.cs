@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class BerthrolotltoltLives : MonoBehaviour
 {
+    QbertMoving qbertscript;
     public int BertLives = 3;
-    public GameObject BertRespawn;
+    public float BertRespawn;
     // Start is called before the first frame update
     void Start()
     {
-        
+        qbertscript = GetComponent<QbertMoving>();
     }
 
     // Update is called once per frame
@@ -22,19 +23,22 @@ public class BerthrolotltoltLives : MonoBehaviour
         }
     }
     //if there is nothing in the space he's on, meaning he jumped off X_X
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == null)
+        if(other.tag == "StillOn")
         {
             StartCoroutine(BertLostlife());
         }
+        
     }
     IEnumerator BertLostlife()
     {
+
+        transform.position = new Vector2(0.066f, -0.188f);
         //work on progress
         BertLives--;
-        transform.position = BertRespawn.transform.position;
-        yield return null;
+        
+        yield return new WaitForSeconds(0);
     }
     IEnumerator Bertdied()
     {
