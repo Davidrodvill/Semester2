@@ -7,47 +7,46 @@ public class BerthrolotltoltLives : MonoBehaviour
 {
     QbertMoving qbertscript;
     public int BertLives = 3;
-    public float BertRespawn;
+    public Vector2 BertRespawn;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        qbertscript = GetComponent<QbertMoving>();
+        BertRespawn = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(BertLives <= 0)
-        {
-            StartCoroutine(Bertdied());
-        }
-    }
-    //if there is nothing in the space he's on, meaning he jumped off X_X
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.tag == "StillOn")
-        {
-            StartCoroutine(BertLostlife());
-        }
         
     }
-    IEnumerator BertLostlife()
-    {
 
-        transform.position = new Vector2(0.066f, -0.188f);
-        //work on progress
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "enemy")
+        {
+
+        }
+    }
+    public void LoseLife()
+    {
         BertLives--;
-        
-        yield return new WaitForSeconds(0);
+        if (BertLives <= 0 ) 
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        else
+        {
+            Respawn();
+        }
     }
-    IEnumerator Bertdied()
+    private void Respawn()
     {
-        
-        //some text saying he died or sum
+        // Reset Q*bert's position to the spawn point.
+        transform.position = BertRespawn;
 
-        yield return new WaitForSeconds(3);
-        //restart scene
-        SceneManager.LoadScene("SampleScene");
-        
+        rb.velocity = Vector2.zero;
     }
+
 }

@@ -397,6 +397,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: {x: 0.6, y: 0.9}
   moveCooldown: 0.5
+  boundsCollider: {fileID: 1565540446}
 --- !u!212 &325424963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -488,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BertLives: 3
-  BertRespawn: 0
+  BertRespawn: {x: 0, y: 0}
 --- !u!50 &325424966
 Rigidbody2D:
   serializedVersion: 4
@@ -503,7 +504,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
