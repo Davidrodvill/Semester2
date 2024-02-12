@@ -24,9 +24,9 @@ public class BerthrolotltoltLives : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "enemy")
+        if(other.tag == "Enemy")
         {
-
+            LoseLife();
         }
     }
     public void LoseLife()
