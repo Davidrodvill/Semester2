@@ -1169,7 +1169,7 @@ GameObject:
   - component: {fileID: 1283612482}
   - component: {fileID: 1283612481}
   m_Layer: 0
-  m_Name: q
+  m_Name: enemytest1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,6 +1217,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: {x: 0.6, y: 0.9}
   moveCooldown: 1
+  boundsCollider: {fileID: 1565540446}
 --- !u!50 &1283612483
 Rigidbody2D:
   serializedVersion: 4
@@ -1536,7 +1537,7 @@ GameObject:
   - component: {fileID: 1565540447}
   - component: {fileID: 1565540446}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Playarea
   m_TagString: StillOn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
