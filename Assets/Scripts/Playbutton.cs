@@ -28,4 +28,8 @@ public class Playbutton : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    public void ControlsButtonHit()
+    {
+        SceneManager.LoadScene("ControlScene");
+    }
 }

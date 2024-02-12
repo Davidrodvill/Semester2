@@ -907,7 +907,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1574848259}
         m_TargetAssemblyTypeName: Playbutton, Assembly-CSharp
-        m_MethodName: PlayButtonHit
+        m_MethodName: ControlsButtonHit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
