@@ -9,11 +9,13 @@ public class BerthrolotltoltLives : MonoBehaviour
     public int BertLives = 3;
     public Vector2 BertRespawn;
     private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
         BertRespawn = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        qbertscript = GetComponent<QbertMoving>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,8 @@ public class BerthrolotltoltLives : MonoBehaviour
         transform.position = BertRespawn;
 
         rb.velocity = Vector2.zero;
+        qbertscript.Respawn();
+
     }
 
 }

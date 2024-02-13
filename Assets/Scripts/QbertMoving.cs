@@ -5,18 +5,20 @@ using System;
 
 public class QbertMoving : MonoBehaviour
 {
-   
+    BerthrolotltoltLives bertoltlifescript;
     public float moveSpeed = 5f; // Speed of the jump
     public Vector2 jumpHeight = new Vector2(1, 0.5f); // Height and length of the jump
     public float moveCooldown = 0.5f; // Cooldown in seconds between moves
     public Collider2D boundsCollider; // Collider that defines the playable area
+    public Vector2 respawnPosition;
 
     private bool canMove = true;
     private Vector2 targetPosition;
 
     void Start()
     {
-       
+        bertoltlifescript = GetComponent<BerthrolotltoltLives>();
+        respawnPosition = transform.position;
         targetPosition = transform.position;
     }
 
@@ -73,6 +75,13 @@ public class QbertMoving : MonoBehaviour
 
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;
+    }
+    public void Respawn()
+    {
+        StopAllCoroutines(); // Stop any movement coroutines
+        transform.position = respawnPosition; // Move Qbert to the safe respawn position
+        targetPosition = respawnPosition; // Reset the target position to prevent unwanted movement
+        canMove = true; // Allow movement again
     }
 
 }
