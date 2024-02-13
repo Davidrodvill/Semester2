@@ -33,7 +33,23 @@ public class QbertMoving : MonoBehaviour
 
     void CheckInput()
     {
-        Vector2 direction = Vector2.zero;
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            StartCoroutine(MovePlayer(new Vector2(jumpHeight.x, jumpHeight.y)));
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            StartCoroutine(MovePlayer(new Vector2(-jumpHeight.x, -jumpHeight.y)));
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            StartCoroutine(MovePlayer(new Vector2(-jumpHeight.x, jumpHeight.y)));
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            StartCoroutine(MovePlayer(new Vector2(jumpHeight.x, -jumpHeight.y)));
+        }
+        /*Vector2 direction = Vector2.zero;
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
@@ -50,16 +66,16 @@ public class QbertMoving : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             direction = new Vector2(jumpHeight.x, -jumpHeight.y);
-        }
+        }*/
 
-        if (direction != Vector2.zero)
+        /*if (direction != Vector2.zero)
         {
             Vector2 potentialTarget = (Vector2)transform.position + direction;
             if (boundsCollider == null || boundsCollider.OverlapPoint(potentialTarget))
             {
                 StartCoroutine(MovePlayer(direction));
             }
-        }
+        }*/
     }
 
     public IEnumerator MovePlayer(Vector2 direction)

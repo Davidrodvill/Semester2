@@ -31,6 +31,13 @@ public class BerthrolotltoltLives : MonoBehaviour
             LoseLife();
         }
     }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.tag == "StillOn")
+        {
+            LoseLife();
+        }
+    }
     public void LoseLife()
     {
         BertLives--;
