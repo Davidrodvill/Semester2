@@ -9,18 +9,32 @@ public class EnemyChaser : MonoBehaviour
     public Vector2 jumpHeight = new Vector2(1, 0.5f);
     public float moveCooldown = 0.5f;
     public Collider2D boundsCollider; // Collider that defines the playable area
+    public float initialDelay = 1f;
 
-    private bool canMove = true;
+    private bool canMove = false;
     private Vector2 targetPosition;
+    private bool initialMoveDone = false;
 
     void Start()
     {
         targetPosition = transform.position;
+        StartCoroutine(InitialDelay());
+    }
+
+    public IEnumerator InitialDelay()
+    {
+        yield return new WaitForSeconds(initialDelay);
+        canMove = true; // After the delay, allow movement
     }
 
     void Update()
     {
-        if (canMove && player != null)
+        if (canMove && player != null && !initialMoveDone)
+        {
+            StartCoroutine(ChasePlayer());
+            initialMoveDone = true;
+        }
+        else if (canMove && player != null)
         {
             StartCoroutine(ChasePlayer());
         }
