@@ -33,6 +33,7 @@ public class QbertMoving : MonoBehaviour
         if (canMove)
         {
             CheckInput();
+            
         }
     }
 
