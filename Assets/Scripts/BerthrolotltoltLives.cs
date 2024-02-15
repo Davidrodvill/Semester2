@@ -52,7 +52,7 @@ public class BerthrolotltoltLives : MonoBehaviour
     }
     private void Respawn()
     {
-        // Reset Q*bert's position to the spawn point.
+        // Reset bert's position to the spawn point.
         transform.position = BertRespawn;
 
         rb.velocity = Vector2.zero;

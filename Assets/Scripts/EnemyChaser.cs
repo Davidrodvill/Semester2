@@ -24,7 +24,7 @@ public class EnemyChaser : MonoBehaviour
     public IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(initialDelay);
-        canMove = true; // After the delay, allow movement
+        canMove = true; 
     }
 
     void Update()
@@ -68,7 +68,7 @@ public class EnemyChaser : MonoBehaviour
 
     private Vector2 DetermineJumpDirection(Vector2 direction)
     {
-        // Modify this method to suit your isometric movement needs
+        
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
             // Move in x direction
