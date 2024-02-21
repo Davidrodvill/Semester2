@@ -54,6 +54,7 @@ public class Level1Manager : MonoBehaviour
                 // Handle level completion here (e.g., show a message or load a new level)
             }
         }
+
         else
         {
             Debug.Log($"Tile at {tilePosition} is not in the set to be changed.");
