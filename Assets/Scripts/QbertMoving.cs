@@ -41,7 +41,13 @@ public class QbertMoving : MonoBehaviour
     {
         if (levelManager != null)
         {
+            // Additional debug information
+            Debug.Log($"ChangeTile called with position {tilePosition}");
             levelManager.PlayerChangedTile(tilePosition);
+        }
+        else
+        {
+            Debug.LogError("LevelManager reference not set in QbertMoving script.");
         }
     }
 
@@ -70,6 +76,7 @@ public class QbertMoving : MonoBehaviour
     public IEnumerator MovePlayer(Vector2 direction)
     {
         canMove = false;
+        Vector2 startPosition = transform.position; // Store the start position
         targetPosition += direction;
 
         while ((Vector2)transform.position != targetPosition)
@@ -77,6 +84,15 @@ public class QbertMoving : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
+
+        // After moving, convert the player's world position to a cell position in the tilemap
+        Vector3Int tilePosition = tilemap.WorldToCell(transform.position);
+
+        // Debugging output
+        Debug.Log($"Attempting to change tile at {tilePosition}");
+
+        // Call the method to attempt to change the tile
+        ChangeTile(tilePosition);
 
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;

@@ -39,16 +39,24 @@ public class Level1Manager : MonoBehaviour
 
     public void PlayerChangedTile(Vector3Int tilePosition)
     {
+        Debug.Log($"Trying to change tile at {tilePosition}");
+
         if (tilesToChange.Contains(tilePosition))
         {
+            Debug.Log($"Tile at {tilePosition} is in the set and will be changed to the target tile.");
             tilemap.SetTile(tilePosition, targetTile);
             tilesToChange.Remove(tilePosition);
+            tilemap.RefreshTile(tilePosition); // This updates the tile's visual appearance
 
             if (tilesToChange.Count == 0)
             {
                 Debug.Log("All tiles changed! Level complete!");
                 // Handle level completion here (e.g., show a message or load a new level)
             }
+        }
+        else
+        {
+            Debug.Log($"Tile at {tilePosition} is not in the set to be changed.");
         }
     }
 }
