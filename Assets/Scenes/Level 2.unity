@@ -1305,7 +1305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1562724062}
-  possibleTiles: []
+  possibleTiles:
+  - {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
 --- !u!4 &1477947964
 Transform:
   m_ObjectHideFlags: 0
