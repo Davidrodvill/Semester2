@@ -106,6 +106,7 @@ public class BertController : MonoBehaviour
             {
                 Debug.Log("All tiles changed! Level complete!");
                 // Handle level completion here
+
             }
         }
     }
