@@ -14,6 +14,8 @@ public class BertController : MonoBehaviour
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
 
+    public GameObject bertlife1, bertlife2, bertlife3;
+
     private Rigidbody2D rb;
     private Vector2 targetPosition;
     private HashSet<Vector3Int> tilesToChange; // Set of tile positions that need to be changed
@@ -127,6 +129,24 @@ public class BertController : MonoBehaviour
     public void LoseLife()
     {
         BertLives--;
+        if(BertLives == 3)
+        {
+            bertlife1.SetActive(true);
+            bertlife2.SetActive(true);
+            bertlife3.SetActive(true);
+        }
+        else if(BertLives == 2)
+        {
+            bertlife1.SetActive(false);
+            bertlife2.SetActive(true);
+            bertlife3.SetActive(true);
+        }
+        else if(BertLives == 1)
+        {
+            bertlife1.SetActive(false);
+            bertlife2.SetActive(false);
+            bertlife3.SetActive(true);
+        }
         if (BertLives <= 0)
         {
             // Get the current scene name and reload it
