@@ -32,4 +32,9 @@ public class Playbutton : MonoBehaviour
     {
         SceneManager.LoadScene("ControlScene");
     }
+    public void BertButtonHit()
+    { 
+        //play audio "qsounds" 
+    
+    }
 }
