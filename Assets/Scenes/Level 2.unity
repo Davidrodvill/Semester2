@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 297712830}
   m_Layer: 0
   m_Name: PlayArea
-  m_TagString: Untagged
+  m_TagString: StillOn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1167,8 +1167,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1417238958}
   - component: {fileID: 1417238960}
-  - component: {fileID: 1417238959}
-  - component: {fileID: 1417238961}
   - component: {fileID: 1417238963}
   - component: {fileID: 1417238962}
   - component: {fileID: 1417238964}
@@ -1194,24 +1192,6 @@ Transform:
   m_Father: {fileID: 1226373783}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417238959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417238957}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bfa4cedc33e034f93f576c0ffd8ff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelManager: {fileID: 1477947963}
-  moveSpeed: 5
-  jumpHeight: {x: 0.6, y: 0.9}
-  moveCooldown: 0.5
-  boundsCollider: {fileID: 297712830}
-  respawnPosition: {x: 0, y: 0}
 --- !u!212 &1417238960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1264,20 +1244,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1417238961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417238957}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae17a2c8caa15f744ba93da231d863ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BertLives: 3
-  BertRespawn: {x: 0, y: 0}
 --- !u!50 &1417238962
 Rigidbody2D:
   serializedVersion: 4
