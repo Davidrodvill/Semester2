@@ -545,6 +545,9 @@ MonoBehaviour:
   moveCooldown: 0.5
   BertLives: 3
   BertRespawn: {x: 0, y: 0}
+  bertlife1: {fileID: 1748031080}
+  bertlife2: {fileID: 1996228118}
+  bertlife3: {fileID: 937461973}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +964,7 @@ GameObject:
   - component: {fileID: 937461976}
   - component: {fileID: 937461975}
   m_Layer: 5
-  m_Name: RawImage (2)
+  m_Name: bertlife3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2273,7 +2276,7 @@ GameObject:
   - component: {fileID: 1748031083}
   - component: {fileID: 1748031082}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: Bertlife1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2682,7 +2685,7 @@ GameObject:
   - component: {fileID: 1996228121}
   - component: {fileID: 1996228120}
   m_Layer: 5
-  m_Name: RawImage (1)
+  m_Name: bertlife2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
