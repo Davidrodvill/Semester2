@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &168251144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1647568793}
-  possibleTiles:
-  - {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
+  targetTile: {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
 --- !u!4 &168251145
 Transform:
   m_ObjectHideFlags: 0
@@ -403,10 +402,9 @@ GameObject:
   m_Component:
   - component: {fileID: 325424961}
   - component: {fileID: 325424963}
-  - component: {fileID: 325424962}
-  - component: {fileID: 325424965}
   - component: {fileID: 325424964}
   - component: {fileID: 325424966}
+  - component: {fileID: 325424967}
   m_Layer: 0
   m_Name: qbert
   m_TagString: Untagged
@@ -429,24 +427,6 @@ Transform:
   m_Father: {fileID: 323195539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &325424962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325424960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bfa4cedc33e034f93f576c0ffd8ff1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelManager: {fileID: 168251144}
-  moveSpeed: 5
-  jumpHeight: {x: 0.6, y: 0.9}
-  moveCooldown: 0.5
-  boundsCollider: {fileID: 1565540446}
-  respawnPosition: {x: 0, y: 0}
 --- !u!212 &325424963
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -486,7 +466,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1661751293
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1511630612, guid: 0038d326f7568594889583a59f49e022, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -525,20 +505,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33237162, y: 0.36371768}
   m_EdgeRadius: 0
---- !u!114 &325424965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325424960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae17a2c8caa15f744ba93da231d863ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BertLives: 3
-  BertRespawn: {x: 0, y: 0}
 --- !u!50 &325424966
 Rigidbody2D:
   serializedVersion: 4
@@ -560,6 +526,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &325424967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325424960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66afbe941d52d14685a315a0d57f0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1647568793}
+  targetTile: {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
+  moveSpeed: 5
+  jumpHeight: {x: 0.6, y: 0.9}
+  moveCooldown: 0.5
+  BertLives: 3
+  BertRespawn: {x: 0, y: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1314,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1661751293
-  m_SortingLayer: 5
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1609394434, guid: 71751abb4ad516e44a07734e6c84357a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1713,7 +1698,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1392197293
-  m_SortingLayer: 4
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -1948,7 +1933,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1392197293
-  m_SortingLayer: 4
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
