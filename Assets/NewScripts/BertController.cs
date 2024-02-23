@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class BertController : MonoBehaviour
 {
@@ -13,9 +15,10 @@ public class BertController : MonoBehaviour
     public float moveCooldown = 0.5f; // Cooldown in seconds between moves
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
-
+    
+    
     public GameObject bertlife1, bertlife2, bertlife3;
-
+    
     private Rigidbody2D rb;
     private Vector2 targetPosition;
     private HashSet<Vector3Int> tilesToChange; // Set of tile positions that need to be changed
@@ -23,10 +26,12 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
+        
         BertRespawn = transform.position; // Set respawn to initial position
         rb = GetComponent<Rigidbody2D>();
         targetPosition = transform.position;
         InitializeTilesToChange();
+        
     }
 
     void InitializeTilesToChange()
@@ -129,6 +134,8 @@ public class BertController : MonoBehaviour
 
     public void LoseLife()
     {
+        
+        
         BertLives--;
         if(BertLives == 3)
         {
@@ -167,5 +174,9 @@ public class BertController : MonoBehaviour
         rb.velocity = Vector2.zero;
         targetPosition = BertRespawn; // Reset the target position
         canMove = true; // Allow movement again
+    }
+    IEnumerator stopwaitaminute()
+    {
+        yield return new WaitForSeconds(3);
     }
 }
