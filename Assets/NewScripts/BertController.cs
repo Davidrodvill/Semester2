@@ -17,7 +17,7 @@ public class BertController : MonoBehaviour
     
     
     public GameObject bertlife1, bertlife2, bertlife3;
-    public TMP_Text youdied;
+   
     private Rigidbody2D rb;
     private Vector2 targetPosition;
     private HashSet<Vector3Int> tilesToChange; // Set of tile positions that need to be changed
@@ -25,7 +25,7 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
-        youdied.text = "";
+        
         BertRespawn = transform.position; // Set respawn to initial position
         rb = GetComponent<Rigidbody2D>();
         targetPosition = transform.position;
