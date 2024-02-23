@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
-using UnityEditor.UI;
-using UnityEngine.UI;
+using TMPro;
 
 public class BertController : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class BertController : MonoBehaviour
     
     
     public GameObject bertlife1, bertlife2, bertlife3;
-    
+    public TMP_Text youdied;
     private Rigidbody2D rb;
     private Vector2 targetPosition;
     private HashSet<Vector3Int> tilesToChange; // Set of tile positions that need to be changed
@@ -26,7 +25,7 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
-        
+        youdied.text = "";
         BertRespawn = transform.position; // Set respawn to initial position
         rb = GetComponent<Rigidbody2D>();
         targetPosition = transform.position;
@@ -50,6 +49,7 @@ public class BertController : MonoBehaviour
 
     void Update()
     {
+        
         if (canMove)
         {
             CheckInput();
@@ -120,6 +120,7 @@ public class BertController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            
             LoseLife();
         }
     }
@@ -128,13 +129,13 @@ public class BertController : MonoBehaviour
     {
         if (other.tag == "StillOn")
         {
+           
             LoseLife();
         }
     }
 
     public void LoseLife()
     {
-        
         
         BertLives--;
         if(BertLives == 3)
@@ -177,6 +178,6 @@ public class BertController : MonoBehaviour
     }
     IEnumerator stopwaitaminute()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(30f);
     }
 }
