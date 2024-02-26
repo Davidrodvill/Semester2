@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Playbutton : MonoBehaviour
 {
+
+    public AudioSource aud;
+    public AudioClip qsounds;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (aud == null)
+        {
+            aud = GetComponent<AudioSource>();
+            DontDestroyOnLoad(aud);
+        }
     }
 
     // Update is called once per frame
@@ -33,8 +41,8 @@ public class Playbutton : MonoBehaviour
         SceneManager.LoadScene("ControlScene");
     }
     public void BertButtonHit()
-    { 
-        //play audio "qsounds" 
+    {
+        aud.PlayOneShot(qsounds,.5f);
     
     }
 }
