@@ -542,7 +542,7 @@ MonoBehaviour:
   tilemap: {fileID: 1647568793}
   targetTile: {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
   moveSpeed: 5
-  jumpHeight: {x: 0.6, y: 1.2}
+  jumpHeight: {x: 1, y: 1}
   moveCooldown: 0.5
   BertLives: 3
   BertRespawn: {x: 0, y: 0}
