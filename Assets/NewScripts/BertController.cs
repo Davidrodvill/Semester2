@@ -84,7 +84,16 @@ public class BertController : MonoBehaviour
     IEnumerator MovePlayer(Vector2 direction)
     {
         canMove = false;
-        targetPosition += direction;
+
+        // Convert the 2D direction to isometric by rotating it 45 degrees
+        Vector2 isometricDirection = RotateVector(direction, 45);
+
+        // Scale the isometric direction by the jump height for x and y
+        isometricDirection = new Vector2(isometricDirection.x * jumpHeight.x, isometricDirection.y * jumpHeight.y);
+
+        // Move Bert to the new position
+        Vector2 newPosition = new Vector2(transform.position.x + isometricDirection.x, transform.position.y + isometricDirection.y);
+        targetPosition = newPosition;
 
         while ((Vector2)transform.position != targetPosition)
         {
@@ -96,24 +105,26 @@ public class BertController : MonoBehaviour
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;
     }
+    // Helper method to rotate a vector by degrees
+    private Vector2 RotateVector(Vector2 v, float degrees)
+    {
+        float radians = degrees * Mathf.Deg2Rad;
+        float sin = Mathf.Sin(radians);
+        float cos = Mathf.Cos(radians);
+
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return v;
+    }
 
     void ChangeTileAtCurrentPosition()
     {
-        Vector3Int tilePosition = tilemap.WorldToCell(transform.position);
-
-        if (tilesToChange.Contains(tilePosition))
-        {
-            tilemap.SetTile(tilePosition, targetTile);
-            tilesToChange.Remove(tilePosition);
-            tilemap.RefreshTile(tilePosition);
-
-            if (tilesToChange.Count == 0)
-            {
-                Debug.Log("All tiles changed! Level complete!");
-                // Handle level completion here
-
-            }
-        }
+        // Use the tile position from when Bert starts entering the tile's top area
+        Vector3Int tilePosition = tilemap.WorldToCell(transform.position - new Vector3(0, tilemap.cellSize.y / 2, 0));
+        tilemap.SetTile(tilePosition, targetTile);
+        tilemap.RefreshTile(tilePosition);
     }
 
     void OnTriggerEnter2D(Collider2D other)

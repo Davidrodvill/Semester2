@@ -542,14 +542,13 @@ MonoBehaviour:
   tilemap: {fileID: 1647568793}
   targetTile: {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
   moveSpeed: 5
-  jumpHeight: {x: 0.6, y: 0.9}
+  jumpHeight: {x: 0.5, y: 1}
   moveCooldown: 0.5
   BertLives: 3
   BertRespawn: {x: 0, y: 0}
   bertlife1: {fileID: 1748031080}
   bertlife2: {fileID: 1996228118}
   bertlife3: {fileID: 937461973}
-  youdied: {fileID: 1459657349}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
