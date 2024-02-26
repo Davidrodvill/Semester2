@@ -105,7 +105,7 @@ public class BertController : MonoBehaviour
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;
     }
-    // Helper method to rotate a vector by degrees
+    // Rotate a vector by degrees
     private Vector2 RotateVector(Vector2 v, float degrees)
     {
         float radians = degrees * Mathf.Deg2Rad;
