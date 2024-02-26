@@ -1245,6 +1245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27fdd39329cb46242bbb3100e6ec5141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aud: {fileID: 1088513931}
+  qsounds: {fileID: 8300000, guid: 021ed8560123ad4439277dc5885a09ea, type: 3}
 --- !u!4 &1574848260
 Transform:
   m_ObjectHideFlags: 0
