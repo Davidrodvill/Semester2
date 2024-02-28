@@ -2302,6 +2302,9 @@ MonoBehaviour:
   moveCooldown: 0.5
   BertLives: 3
   BertRespawn: {x: 0, y: 0}
+  bertlife1: {fileID: 529229625}
+  bertlife2: {fileID: 1635261688}
+  bertlife3: {fileID: 478439047}
 --- !u!1 &1635261688
 GameObject:
   m_ObjectHideFlags: 0
