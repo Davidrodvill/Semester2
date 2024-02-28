@@ -60,19 +60,19 @@ public class BertController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            Move(new Vector2(jumpHeight.x, jumpHeight.y));
+            StartCoroutine(MovePlayer(new Vector2(1, 1))); // Move up-right
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            Move(new Vector2(-jumpHeight.x, -jumpHeight.y));
+            StartCoroutine(MovePlayer(new Vector2(-1, -1))); // Move down-left
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            Move(new Vector2(-jumpHeight.x, jumpHeight.y));
+            StartCoroutine(MovePlayer(new Vector2(-1, 1))); // Move up-left
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            Move(new Vector2(jumpHeight.x, -jumpHeight.y));
+            StartCoroutine(MovePlayer(new Vector2(1, -1))); // Move down-right
         }
     }
 
@@ -83,7 +83,7 @@ public class BertController : MonoBehaviour
 
     IEnumerator MovePlayer(Vector2 direction)
     {
-        canMove = false;
+        /*canMove = false;
 
         // Convert the 2D direction to isometric by rotating it 45 degrees
         Vector2 isometricDirection = RotateVector(direction, 45);
@@ -101,6 +101,35 @@ public class BertController : MonoBehaviour
             yield return null;
         }
 
+        ChangeTileAtCurrentPosition();
+        yield return new WaitForSeconds(moveCooldown);
+        canMove = true;
+        */
+        canMove = false;
+        Vector3Int currentCell = tilemap.WorldToCell(transform.position);
+
+        // Determine the target cell based on the direction
+        // Assuming the grid is oriented such that:
+        // - Up (W) means moving up-right
+        // - Down (S) means moving down-left
+        // - Left (A) means moving up-left
+        // - Right (D) means moving down-right
+        Vector3Int offset = new Vector3Int(
+            (direction.x > 0 ? 1 : -1) * (direction.y > 0 ? 1 : 0),
+            (direction.y > 0 ? 1 : -1) * (direction.x > 0 ? 0 : 1),
+            0
+        );
+        Vector3Int targetCell = currentCell + offset;
+        Vector3 targetWorldPosition = tilemap.GetCellCenterWorld(targetCell);
+
+        // Move Bert to the new position
+        while ((Vector2)transform.position != (Vector2)targetWorldPosition)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Change the tile at the new position
         ChangeTileAtCurrentPosition();
         yield return new WaitForSeconds(moveCooldown);
         canMove = true;
