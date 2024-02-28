@@ -24,7 +24,7 @@ public class NextLevels : MonoBehaviour
     }
     public void level3()
     {
-
+        //make game go into level 3
     }
     public void level4()
     {
