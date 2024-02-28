@@ -20,7 +20,7 @@ public class NextLevels : MonoBehaviour
     }
     public void level2()
     {
-        //make the gmae go into level 2
+        //make the game go into level 2
     }
     public void level3()
     {
