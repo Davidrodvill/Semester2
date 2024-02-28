@@ -9,7 +9,7 @@ public class NextLevels : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bertController = GetComponent<BertController>();
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class NextLevels : MonoBehaviour
     }
     public void level4()
     {
-
+        
     }
 }
