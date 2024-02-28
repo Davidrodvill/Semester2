@@ -7,6 +7,7 @@ using TMPro;
 
 public class BertController : MonoBehaviour
 {
+    NextLevels nextLevels;
     public Tilemap tilemap;
     public Tile targetTile; // The tile to change to when Bert moves
     public float moveSpeed = 5f; // Speed of the jump
