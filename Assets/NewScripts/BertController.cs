@@ -25,7 +25,7 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
-        
+        canMove = true;
         BertRespawn = transform.position; // Set respawn to initial position
         rb = GetComponent<Rigidbody2D>();
         targetPosition = transform.position;
@@ -60,81 +60,50 @@ public class BertController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            StartCoroutine(MovePlayer(new Vector2(1, 1))); // Move up-right
+            StartCoroutine(MovePlayer(new Vector2(0.6f, 0.9f))); // Move up-right
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            StartCoroutine(MovePlayer(new Vector2(-1, -1))); // Move down-left
+            StartCoroutine(MovePlayer(new Vector2(-0.6f, -0.9f))); // Move down-left
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(MovePlayer(new Vector2(-1, 1))); // Move up-left
+            StartCoroutine(MovePlayer(new Vector2(-0.6f, 0.9f))); // Move up-left
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            StartCoroutine(MovePlayer(new Vector2(1, -1))); // Move down-right
+            StartCoroutine(MovePlayer(new Vector2(0.6f, -0.9f))); // Move down-right
         }
     }
 
-    void Move(Vector2 direction)
-    {
-        StartCoroutine(MovePlayer(direction));
-    }
+    
 
     IEnumerator MovePlayer(Vector2 direction)
     {
-        /*canMove = false;
 
-        // Convert the 2D direction to isometric by rotating it 45 degrees
-        Vector2 isometricDirection = RotateVector(direction, 45);
-
-        // Scale the isometric direction by the jump height for x and y
-        isometricDirection = new Vector2(isometricDirection.x * jumpHeight.x, isometricDirection.y * jumpHeight.y);
-
-        // Move Bert to the new position
-        Vector2 newPosition = new Vector2(transform.position.x + isometricDirection.x, transform.position.y + isometricDirection.y);
-        targetPosition = newPosition;
-
-        while ((Vector2)transform.position != targetPosition)
+        if (canMove)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            yield return null;
+            canMove = false;
+
+            // Convert the direction to isometric
+            Vector3 isoDirection = new Vector3(direction.x, direction.y, 0);
+            Vector3 targetWorldPosition = transform.position + isoDirection;
+
+            // Move Bert to the new position
+            while ((Vector2)transform.position != (Vector2)targetWorldPosition)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            ChangeTileAtCurrentPosition();
+            yield return new WaitForSeconds(moveCooldown);
+            canMove = true;
         }
-
-        ChangeTileAtCurrentPosition();
-        yield return new WaitForSeconds(moveCooldown);
-        canMove = true;
-        */
-        canMove = false;
-        Vector3Int currentCell = tilemap.WorldToCell(transform.position);
-
-        // Determine the target cell based on the direction
-        // Assuming the grid is oriented such that:
-        // - Up (W) means moving up-right
-        // - Down (S) means moving down-left
-        // - Left (A) means moving up-left
-        // - Right (D) means moving down-right
-        Vector3Int offset = new Vector3Int(
-            (direction.x > 0 ? 1 : -1) * (direction.y > 0 ? 1 : 0),
-            (direction.y > 0 ? 1 : -1) * (direction.x > 0 ? 0 : 1),
-            0
-        );
-        Vector3Int targetCell = currentCell + offset;
-        Vector3 targetWorldPosition = tilemap.GetCellCenterWorld(targetCell);
-
-        // Move Bert to the new position
-        while ((Vector2)transform.position != (Vector2)targetWorldPosition)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, targetWorldPosition, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        // Change the tile at the new position
-        ChangeTileAtCurrentPosition();
-        yield return new WaitForSeconds(moveCooldown);
-        canMove = true;
     }
+
     // Rotate a vector by degrees
+    /*
     private Vector2 RotateVector(Vector2 v, float degrees)
     {
         float radians = degrees * Mathf.Deg2Rad;
@@ -147,7 +116,7 @@ public class BertController : MonoBehaviour
         v.y = (sin * tx) + (cos * ty);
         return v;
     }
-
+    */
     void ChangeTileAtCurrentPosition()
     {
         // Use the tile position from when Bert starts entering the tile's top area
