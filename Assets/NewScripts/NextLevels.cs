@@ -15,7 +15,7 @@ public class NextLevels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //game
     }
     public void level2()
     {
