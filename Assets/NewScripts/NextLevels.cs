@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevels : MonoBehaviour
 {
+    BertController bertController;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,9 @@ public class NextLevels : MonoBehaviour
     void Update()
     {
         
+    }
+    public void level2()
+    {
+
     }
 }
