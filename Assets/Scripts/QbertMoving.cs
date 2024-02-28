@@ -15,7 +15,7 @@ public class QbertMoving : MonoBehaviour
     public Collider2D boundsCollider; // Collider that defines the playable area
     public Vector2 respawnPosition;
 
-    private bool canMove = true;
+    private bool canMove = true; 
     private Vector2 targetPosition;
 
     void Start()
