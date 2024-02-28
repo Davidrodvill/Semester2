@@ -21,4 +21,12 @@ public class NextLevels : MonoBehaviour
     {
 
     }
+    public void level3()
+    {
+
+    }
+    public void level4()
+    {
+
+    }
 }
