@@ -15,8 +15,8 @@ public class BertController : MonoBehaviour
     public float moveCooldown = 0.5f; // Cooldown in seconds between moves
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
-    
-    
+
+    Animator animator; // Animator component attached to Bert
     public GameObject bertlife1, bertlife2, bertlife3;
    
     private Rigidbody2D rb;
@@ -31,7 +31,7 @@ public class BertController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         targetPosition = transform.position;
         InitializeTilesToChange();
-        
+        animator = GetComponent<Animator>();
     }
 
     void InitializeTilesToChange()
@@ -85,7 +85,8 @@ public class BertController : MonoBehaviour
         if (canMove)
         {
             canMove = false;
-
+            // Trigger the jump animation
+            animator.SetBool("isJumping", true);
             // Convert the direction to isometric
             Vector3 isoDirection = new Vector3(direction.x, direction.y, 0);
             Vector3 targetWorldPosition = transform.position + isoDirection;
@@ -97,6 +98,7 @@ public class BertController : MonoBehaviour
                 yield return null;
             }
 
+            animator.SetBool("isJumping", false);
             ChangeTileAtCurrentPosition();
             yield return new WaitForSeconds(moveCooldown);
             canMove = true;
