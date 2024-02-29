@@ -974,11 +974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6291488798429342692, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.25
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6291488798429342692, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6291488798429342692, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1016,6 +1016,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: enem_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6291488798429342699, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 325424961}
+    - target: {fileID: 6291488798429342699, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
+      propertyPath: moveCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6291488798429342699, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
+      propertyPath: boundsCollider
+      value: 
+      objectReference: {fileID: 673931033}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a47da5479e3c01438116b5e5ff74c65, type: 3}
 --- !u!1 &519420028
@@ -2214,7 +2226,7 @@ MonoBehaviour:
   player: {fileID: 325424961}
   moveSpeed: 5
   jumpHeight: {x: 0.6, y: 0.9}
-  moveCooldown: 0.5
+  moveCooldown: 3
   boundsCollider: {fileID: 673931033}
   initialDelay: 1
 --- !u!61 &1447912737
@@ -2230,7 +2242,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.008120779, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2241,7 +2253,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.13}
+  m_Size: {x: 0.16879225, y: 0.13}
   m_EdgeRadius: 0
 --- !u!212 &1447912738
 SpriteRenderer:
