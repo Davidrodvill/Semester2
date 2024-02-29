@@ -34,6 +34,7 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
+        nextLevels = FindObjectOfType<NextLevels>();
         canMove = true;
         BertRespawn = transform.position; // Set respawn to initial position
         rb = GetComponent<Rigidbody2D>();
@@ -149,11 +150,15 @@ public class BertController : MonoBehaviour
         // Display win text or handle the win scenario
         winText.gameObject.SetActive(true);
         winText.text = "You Win!";
-        // Here you could also trigger a win animation or sound if you have one
-        // animator.SetTrigger("WinTrigger");
-
-        // Optionally, load the next level or scene after a delay
-        // StartCoroutine(LoadNextLevel());
+        if (nextLevels != null)
+        {
+            nextLevels.winBool = true; // Set the win condition
+            nextLevels.GoToNextLevel(); // Tell NextLevels to handle the transition
+        }
+        else
+        {
+            Debug.LogError("NextLevels script not found!");
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {

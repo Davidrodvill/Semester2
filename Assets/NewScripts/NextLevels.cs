@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextLevels : MonoBehaviour
 {
     //gameplan
+    public bool winBool = false;
     BertController bertController;
     // Start is called before the first frame update
     void Start()
@@ -19,16 +20,31 @@ public class NextLevels : MonoBehaviour
     {
         //game
     }
-    public void level2()
+    public void GoToNextLevel()
     {
-        //make the game go into level 2
-    }
-    public void level3()
-    {
-        //make game go into level 3
-    }
-    public void level4()
-    {
-        //make game go into level 4
+        if (winBool)
+        {
+            // Determine the current scene
+            string currentSceneName = SceneManager.GetActiveScene().name;
+
+            // Depending on the current scene, load the next one
+            if (currentSceneName == "SampleScene")
+            {
+                SceneManager.LoadScene("Level 2");
+            }
+            else if (currentSceneName == "Level 2")
+            {
+                SceneManager.LoadScene("Level 3");
+            }
+            else if (currentSceneName == "Level 3")
+            {
+                SceneManager.LoadScene("Level 4");
+            }
+            else if (currentSceneName == "Level 4")
+            {
+                // If it's the last level, you could go to a win screen or loop back to the start
+                //SceneManager.LoadScene("WinScene");
+            }
+        }
     }
 }
