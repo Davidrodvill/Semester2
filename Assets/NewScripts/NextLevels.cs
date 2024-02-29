@@ -35,16 +35,16 @@ public class NextLevels : MonoBehaviour
             }
             else if (currentSceneName == "SampleScene 1")
             {
-                SceneManager.LoadScene("Level 3");
+                SceneManager.LoadScene("SampleScene 2");
             }
-            else if (currentSceneName == "Level 3")
+            else if (currentSceneName == "SampleScene 2")
             {
-                SceneManager.LoadScene("Level 4");
+                SceneManager.LoadScene("SampleScene 3");
             }
-            else if (currentSceneName == "Level 4")
+            else if (currentSceneName == "SampleScene 3")
             {
                 // If it's the last level, you could go to a win screen or loop back to the start
-                //SceneManager.LoadScene("WinScene");
+                SceneManager.LoadScene("WinScene");
             }
         }
         else
