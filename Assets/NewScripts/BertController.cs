@@ -212,7 +212,15 @@ public class BertController : MonoBehaviour
         yield return new WaitForSeconds(1.5f); // Wait for the message to display for 2 seconds
         finalDeathText.gameObject.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        if(currentSceneName == "SampleScene 2" || currentSceneName == "SampleScene 3")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene(currentSceneName);
+        }
+        
     }
     void UpdateLifeUI()
     {
