@@ -192,9 +192,11 @@ public class BertController : MonoBehaviour
        
         if (BertLives <= 0)
         {
+            
             // Show final death message and reload the level
             finalDeathText.gameObject.SetActive(true);
             finalDeathText.text = "YOU LOST, RESTARTING LEVEL";
+            canMove = false;
             StartCoroutine(ReloadLevel());
         }
         else
@@ -206,7 +208,8 @@ public class BertController : MonoBehaviour
     
     IEnumerator ReloadLevel()
     {
-        yield return new WaitForSeconds(2); // Wait for the message to display for 2 seconds
+        canMove = false;
+        yield return new WaitForSeconds(1.5f); // Wait for the message to display for 2 seconds
         finalDeathText.gameObject.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
