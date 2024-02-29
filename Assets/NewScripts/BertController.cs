@@ -7,6 +7,8 @@ using TMPro;
 
 public class BertController : MonoBehaviour
 {
+    // Reference to keep track of the coroutine
+    private Coroutine movePlayerCoroutine;
     NextLevels nextLevels;
     public Tilemap tilemap;
     public Tile targetTile; // The tile to change to when Bert moves
@@ -113,6 +115,8 @@ public class BertController : MonoBehaviour
             ChangeTileAtCurrentPosition();
             yield return new WaitForSeconds(moveCooldown);
             canMove = true;
+
+            movePlayerCoroutine = null;
         }
     }
 
@@ -174,6 +178,7 @@ public class BertController : MonoBehaviour
         
         BertLives--;
         UpdateLifeUI();
+       
         if (BertLives <= 0)
         {
             // Show final death message and reload the level
@@ -183,22 +188,11 @@ public class BertController : MonoBehaviour
         }
         else
         {
-            // Show regular death message
-            StartCoroutine(ShowDeathMessage());
+            
             Respawn();
         }
     }
-    IEnumerator ShowDeathMessage()
-    {
-        deathText.gameObject.SetActive(true);
-        deathText.text = "YOU DIED YOU MONKEY";
-        Debug.Log("Death message should now be visible.");
-
-        yield return new WaitForSeconds(2); // Message displays for 2 seconds
-
-        deathText.gameObject.SetActive(false);
-        Debug.Log("Death message should now be hidden.");
-    }
+    
     IEnumerator ReloadLevel()
     {
         yield return new WaitForSeconds(2); // Wait for the message to display for 2 seconds
@@ -222,6 +216,7 @@ public class BertController : MonoBehaviour
         rb.velocity = Vector2.zero;
         targetPosition = BertRespawn; // Reset the target position
         canMove = true; // Allow movement again
+
     }
     
 }
