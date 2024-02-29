@@ -15,7 +15,7 @@ public class BertController : MonoBehaviour
     public float moveCooldown = 0.5f; // Cooldown in seconds between moves
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
-
+    public TMP_Text winText;
     AudioSource audiosource;
     Animator animator; // Animator component attached to Bert
     public AudioClip jumpsound;
@@ -113,29 +113,45 @@ public class BertController : MonoBehaviour
         }
     }
 
-    // Rotate a vector by degrees
-    /*
-    private Vector2 RotateVector(Vector2 v, float degrees)
-    {
-        float radians = degrees * Mathf.Deg2Rad;
-        float sin = Mathf.Sin(radians);
-        float cos = Mathf.Cos(radians);
-
-        float tx = v.x;
-        float ty = v.y;
-        v.x = (cos * tx) - (sin * ty);
-        v.y = (sin * tx) + (cos * ty);
-        return v;
-    }
-    */
+    
     void ChangeTileAtCurrentPosition()
     {
         // Use the tile position from when Bert starts entering the tile's top area
         Vector3Int tilePosition = tilemap.WorldToCell(transform.position - new Vector3(0, tilemap.cellSize.y / 2, 0));
+
+        if (tilesToChange.Contains(tilePosition))
+        {
+            tilemap.SetTile(tilePosition, targetTile);
+            tilemap.RefreshTile(tilePosition);
+            tilesToChange.Remove(tilePosition); // Remove the tile position from the set
+
+            // Check for win condition
+            if (tilesToChange.Count == 0)
+            {
+                // Player wins, all tiles have been changed
+                Win();
+            }
+        }
+
+        // Use the tile position from when Bert starts entering the tile's top area
+        /*Vector3Int tilePosition = tilemap.WorldToCell(transform.position - new Vector3(0, tilemap.cellSize.y / 2, 0));
         tilemap.SetTile(tilePosition, targetTile);
         tilemap.RefreshTile(tilePosition);
+        */
     }
 
+    void Win()
+    {
+        canMove = false; // Prevent further movement
+        // Display win text or handle the win scenario
+        winText.gameObject.SetActive(true);
+        winText.text = "You Win!";
+        // Here you could also trigger a win animation or sound if you have one
+        // animator.SetTrigger("WinTrigger");
+
+        // Optionally, load the next level or scene after a delay
+        // StartCoroutine(LoadNextLevel());
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
