@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class FinalScore : MonoBehaviour
 {
@@ -15,5 +16,14 @@ public class FinalScore : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void returntomainmenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+    public void quitgame()
+    {
+        Application.Quit();
     }
 }
