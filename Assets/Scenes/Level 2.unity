@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 1417238967}
   - component: {fileID: 1417238964}
   - component: {fileID: 1417238966}
-  - component: {fileID: 1417238965}
+  - component: {fileID: 1417238968}
   m_Layer: 0
   m_Name: qbert
   m_TagString: Untagged
@@ -1590,27 +1590,6 @@ MonoBehaviour:
   bertlife1: {fileID: 1484457429}
   bertlife2: {fileID: 427222392}
   bertlife3: {fileID: 1134092936}
---- !u!95 &1417238965
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417238957}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0ccbd2bccd31ff448a3ba7dc387d73a4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &1417238966
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1720,6 +1699,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winBool: 0
+--- !u!95 &1417238968
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417238957}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ccbd2bccd31ff448a3ba7dc387d73a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1477947962
 GameObject:
   m_ObjectHideFlags: 0

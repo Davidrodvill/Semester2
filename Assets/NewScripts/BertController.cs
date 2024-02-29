@@ -8,7 +8,7 @@ using TMPro;
 public class BertController : MonoBehaviour
 {
     // Reference to keep track of the coroutine
-    private Coroutine movePlayerCoroutine;
+    
     NextLevels nextLevels;
     public Tilemap tilemap;
     public Tile targetTile; // The tile to change to when Bert moves
@@ -117,7 +117,7 @@ public class BertController : MonoBehaviour
             yield return new WaitForSeconds(moveCooldown);
             canMove = true;
 
-            movePlayerCoroutine = null;
+            
         }
     }
 
@@ -146,12 +146,14 @@ public class BertController : MonoBehaviour
 
     void Win()
     {
+        Debug.Log("Win condition met"); // Debug message
         canMove = false; // Prevent further movement
         // Display win text or handle the win scenario
         winText.gameObject.SetActive(true);
         winText.text = "You Win!";
         if (nextLevels != null)
         {
+            Debug.Log("NextLevels found, setting winBool to true and calling GoToNextLevel");
             nextLevels.winBool = true; // Set the win condition
             nextLevels.GoToNextLevel(); // Tell NextLevels to handle the transition
         }

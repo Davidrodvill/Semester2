@@ -26,6 +26,7 @@ public class NextLevels : MonoBehaviour
         {
             // Determine the current scene
             string currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"Current Scene: {currentSceneName}. Preparing to load next level.");
 
             // Depending on the current scene, load the next one
             if (currentSceneName == "SampleScene")
@@ -45,6 +46,10 @@ public class NextLevels : MonoBehaviour
                 // If it's the last level, you could go to a win screen or loop back to the start
                 //SceneManager.LoadScene("WinScene");
             }
+        }
+        else
+        {
+            Debug.Log("GoToNextLevel called, but winBool is false.");
         }
     }
 }
