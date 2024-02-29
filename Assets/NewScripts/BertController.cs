@@ -16,6 +16,9 @@ public class BertController : MonoBehaviour
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
     public TMP_Text winText;
+    public TMP_Text deathText; // Assign in the inspector
+    public TMP_Text finalDeathText; // Assign in the inspector
+
     AudioSource audiosource;
     Animator animator; // Animator component attached to Bert
     public AudioClip jumpsound;
@@ -133,11 +136,7 @@ public class BertController : MonoBehaviour
             }
         }
 
-        // Use the tile position from when Bert starts entering the tile's top area
-        /*Vector3Int tilePosition = tilemap.WorldToCell(transform.position - new Vector3(0, tilemap.cellSize.y / 2, 0));
-        tilemap.SetTile(tilePosition, targetTile);
-        tilemap.RefreshTile(tilePosition);
-        */
+        
     }
 
     void Win()
@@ -174,36 +173,48 @@ public class BertController : MonoBehaviour
     {
         
         BertLives--;
-        if(BertLives == 3)
-        {
-            bertlife1.SetActive(true);
-            bertlife2.SetActive(true);
-            bertlife3.SetActive(true);
-        }
-        else if(BertLives == 2)
-        {
-            bertlife1.SetActive(false);
-            bertlife2.SetActive(true);
-            bertlife3.SetActive(true);
-        }
-        else if(BertLives == 1)
-        {
-            bertlife1.SetActive(false);
-            bertlife2.SetActive(false);
-            bertlife3.SetActive(true);
-        }
+        UpdateLifeUI();
         if (BertLives <= 0)
         {
-            // Get the current scene name and reload it
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            // Show final death message and reload the level
+            finalDeathText.gameObject.SetActive(true);
+            finalDeathText.text = "YOU LOST, RESTARTING LEVEL";
+            StartCoroutine(ReloadLevel());
         }
         else
         {
+            // Show regular death message
+            StartCoroutine(ShowDeathMessage());
             Respawn();
         }
     }
+    IEnumerator ShowDeathMessage()
+    {
+        deathText.gameObject.SetActive(true);
+        deathText.text = "YOU DIED YOU MONKEY";
+        Debug.Log("Death message should now be visible.");
 
+        yield return new WaitForSeconds(2); // Message displays for 2 seconds
+
+        deathText.gameObject.SetActive(false);
+        Debug.Log("Death message should now be hidden.");
+    }
+    IEnumerator ReloadLevel()
+    {
+        yield return new WaitForSeconds(2); // Wait for the message to display for 2 seconds
+        finalDeathText.gameObject.SetActive(false);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+    void UpdateLifeUI()
+    {
+        
+        // Update your life UI here
+        // Example:
+        bertlife1.SetActive(BertLives > 0);
+        bertlife2.SetActive(BertLives > 1);
+        bertlife3.SetActive(BertLives > 2);
+    }
     void Respawn()
     {
         StopAllCoroutines(); // Stop any ongoing movement coroutines
@@ -212,8 +223,5 @@ public class BertController : MonoBehaviour
         targetPosition = BertRespawn; // Reset the target position
         canMove = true; // Allow movement again
     }
-    IEnumerator stopwaitaminute()
-    {
-        yield return new WaitForSeconds(30f);
-    }
+    
 }
