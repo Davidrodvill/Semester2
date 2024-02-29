@@ -20,7 +20,8 @@ public class BertController : MonoBehaviour
     public TMP_Text winText;
     public TMP_Text deathText; // Assign in the inspector
     public TMP_Text finalDeathText; // Assign in the inspector
-
+    public TMP_Text scoretext;
+    public int scoreint;
     AudioSource audiosource;
     Animator animator; // Animator component attached to Bert
     public AudioClip jumpsound;
@@ -65,6 +66,7 @@ public class BertController : MonoBehaviour
         if (canMove)
         {
             CheckInput();
+            scoretext.text = "" + scoreint;
         }
     }
 
@@ -140,6 +142,7 @@ public class BertController : MonoBehaviour
                 // Player wins, all tiles have been changed
                 Win();
             }
+            scoreint += 100;
         }
 
         
