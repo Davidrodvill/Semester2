@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1647568793}
-  targetTile: {fileID: 11400000, guid: 4931d12254025c6499e29570b1d5996d, type: 2}
+  targetTile: {fileID: 11400000, guid: 2256d44947cee5d42928c62d9c0b7b07, type: 2}
   moveSpeed: 5
   jumpHeight: {x: 1, y: 1}
   moveCooldown: 0.5
