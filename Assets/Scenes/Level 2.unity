@@ -1440,7 +1440,7 @@ GameObject:
   - component: {fileID: 1417238963}
   - component: {fileID: 1417238962}
   - component: {fileID: 1417238967}
-  - component: {fileID: 1417238964}
+  - component: {fileID: 1417238969}
   - component: {fileID: 1417238966}
   - component: {fileID: 1417238968}
   m_Layer: 0
@@ -1564,32 +1564,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3123324, y: 0.3320991}
   m_EdgeRadius: 0
---- !u!114 &1417238964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417238957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a66afbe941d52d14685a315a0d57f0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 1562724062}
-  targetTile: {fileID: 11400000, guid: f56e0cf0465efc040a91e1191fa7fc1d, type: 2}
-  moveSpeed: 5
-  jumpHeight: {x: 0.6, y: 0.9}
-  moveCooldown: 0.5
-  BertLives: 3
-  BertRespawn: {x: 0, y: 0}
-  winText: {fileID: 1294187617}
-  deathText: {fileID: 2054360513}
-  finalDeathText: {fileID: 161940532}
-  jumpsound: {fileID: 8300000, guid: 45126adde925066448bc032392ab1555, type: 3}
-  bertlife1: {fileID: 1484457429}
-  bertlife2: {fileID: 427222392}
-  bertlife3: {fileID: 1134092936}
 --- !u!82 &1417238966
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1720,6 +1694,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1417238969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417238957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66afbe941d52d14685a315a0d57f0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1562724062}
+  targetTile: {fileID: 11400000, guid: f56e0cf0465efc040a91e1191fa7fc1d, type: 2}
+  moveSpeed: 5
+  jumpHeight: {x: 1, y: 0.5}
+  moveCooldown: 0.5
+  BertLives: 3
+  BertRespawn: {x: 0, y: 0}
+  winText: {fileID: 1294187617}
+  deathText: {fileID: 2054360513}
+  finalDeathText: {fileID: 161940532}
+  jumpsound: {fileID: 8300000, guid: 45126adde925066448bc032392ab1555, type: 3}
+  bertlife1: {fileID: 1484457429}
+  bertlife2: {fileID: 427222392}
+  bertlife3: {fileID: 1134092936}
 --- !u!1 &1477947962
 GameObject:
   m_ObjectHideFlags: 0
