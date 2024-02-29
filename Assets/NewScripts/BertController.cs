@@ -16,7 +16,10 @@ public class BertController : MonoBehaviour
     public int BertLives = 3; // Number of lives Bert starts with
     public Vector2 BertRespawn; // Position where Bert respawns after losing a life
 
+    AudioSource audiosource;
     Animator animator; // Animator component attached to Bert
+    public AudioClip jumpsound;
+
     public GameObject bertlife1, bertlife2, bertlife3;
    
     private Rigidbody2D rb;
@@ -32,6 +35,7 @@ public class BertController : MonoBehaviour
         targetPosition = transform.position;
         InitializeTilesToChange();
         animator = GetComponent<Animator>();
+        audiosource= GetComponent<AudioSource>();
     }
 
     void InitializeTilesToChange()
@@ -85,8 +89,12 @@ public class BertController : MonoBehaviour
         if (canMove)
         {
             canMove = false;
+
             // Trigger the jump animation
             animator.SetBool("isJumping", true);
+            audiosource.PlayOneShot(jumpsound);
+
+
             // Convert the direction to isometric
             Vector3 isoDirection = new Vector3(direction.x, direction.y, 0);
             Vector3 targetWorldPosition = transform.position + isoDirection;
