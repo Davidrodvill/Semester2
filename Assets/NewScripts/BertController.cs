@@ -34,6 +34,7 @@ public class BertController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("hef");
         nextLevels = FindObjectOfType<NextLevels>();
         canMove = true;
         BertRespawn = transform.position; // Set respawn to initial position

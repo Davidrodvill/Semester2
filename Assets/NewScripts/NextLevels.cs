@@ -31,9 +31,9 @@ public class NextLevels : MonoBehaviour
             // Depending on the current scene, load the next one
             if (currentSceneName == "SampleScene")
             {
-                SceneManager.LoadScene("Level 2");
+                SceneManager.LoadScene("SampleScene 1");
             }
-            else if (currentSceneName == "Level 2")
+            else if (currentSceneName == "SampleScene 1")
             {
                 SceneManager.LoadScene("Level 3");
             }
